@@ -16,7 +16,7 @@ public class TestJSONPlaceholder extends RestAssuredClient {
 
     LoadProperties loadProperties;
     String URL;
-    Response response;
+    Response myResponse;
     ValidatableResponse validatableResponse;
 
     @BeforeSuite
@@ -30,9 +30,9 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         String endpoint = JSONPlaceholderResources.USERS;
         String requestURI = URL + endpoint;
 
-        response = get(requestURI);
+        myResponse = get(requestURI);
 
-        response.then().assertThat().statusCode(HttpURLConnection.HTTP_OK);
+        myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK);
     }
 
     @Test
@@ -40,9 +40,9 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         String endpoint = JSONPlaceholderResources.USERS;
         String requestURI = URL + endpoint;
 
-        response = get(requestURI);
+        myResponse = get(requestURI);
 
-        response.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(10));
+        myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(10));
     }
 
     @Test
@@ -50,9 +50,9 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         String endpoint = JSONPlaceholderResources.POSTS;
         String requestURI = URL + endpoint;
 
-        response = get(requestURI);
+        myResponse = get(requestURI);
 
-        response.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(100));
+        myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(100));
     }
 
     @Test
@@ -60,9 +60,9 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         String endpoint = JSONPlaceholderResources.COMMENTS;
         String requestURI = URL + endpoint;
 
-        response = get(requestURI);
+        myResponse = get(requestURI);
 
-        response.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(500));
+        myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(500));
     }
 
     @Test
@@ -70,9 +70,9 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         String endpoint = JSONPlaceholderResources.PHOTOS;
         String requestURI = URL + endpoint;
 
-        response = get(requestURI);
+        myResponse = get(requestURI);
 
-        response.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(5000));
+        myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(5000));
     }
 
     @Test (dataProvider = "userEmails", dataProviderClass = JSONPlaceholderDataProviders.class)
@@ -82,8 +82,8 @@ public class TestJSONPlaceholder extends RestAssuredClient {
 
         HashMap<String, Object> params = new HashMap<>();
         params.put("id", id);
-        response = getWithParams(requestURI, params);
+        myResponse = getWithParams(requestURI, params);
 
-        response.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("email", Matchers.hasToString("[" + email + "]"));
+        myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("email", Matchers.hasToString("[" + email + "]"));
     }
 }

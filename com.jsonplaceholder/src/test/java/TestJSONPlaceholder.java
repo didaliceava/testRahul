@@ -35,6 +35,7 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK);
         System.out.println("test1");
         System.out.println("test11");
+        System.out.println("test222");
     }
 
     @Test
@@ -47,6 +48,7 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(10));
         System.out.println("test2");
         System.out.println("test22");
+        System.out.println("test222");
     }
 
     @Test

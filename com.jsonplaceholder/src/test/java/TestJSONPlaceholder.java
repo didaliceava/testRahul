@@ -33,6 +33,7 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         myResponse = get(requestURI);
 
         myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK);
+        System.out.println("test1");
     }
 
     @Test
@@ -43,6 +44,7 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         myResponse = get(requestURI);
 
         myResponse.then().assertThat().statusCode(HttpURLConnection.HTTP_OK).body("id", hasSize(10));
+        System.out.println("test2");
     }
 
     @Test

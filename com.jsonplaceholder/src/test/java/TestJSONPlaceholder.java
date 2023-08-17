@@ -49,6 +49,7 @@ public class TestJSONPlaceholder extends RestAssuredClient {
         System.out.println("test2");
         System.out.println("test22");
         System.out.println("test222");
+        System.out.println("ReadyToMerge");
     }
 
     @Test
